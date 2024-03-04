@@ -9,10 +9,9 @@ import (
 var defaultConfig = http.DefaultTransport
 
 func main(){
-  http.HandleFunc("/", handleRequest)
 
   log.Println("server running on port 8000")
-  http.ListenAndServe(":8000", nil)
+  http.ListenAndServe(":8000", http.HandlerFunc(handleRequest))
 }
 
 func handleRequest(w http.ResponseWriter, r *http.Request){
