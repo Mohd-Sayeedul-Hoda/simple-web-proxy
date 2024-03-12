@@ -31,6 +31,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request){
   resp, err := defaultConfig.RoundTrip(proxyRequest)
   if err != nil{
     http.Error(w, "error while sending request", http.StatusInternalServerError)
+    return
   }
   defer resp.Body.Close()
 
